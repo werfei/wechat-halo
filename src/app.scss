@@ -1,0 +1,151 @@
+@import '~taro-ui/dist/style/index.scss';
+@import './assets/font/iconfont.scss';
+
+page, html {
+  background: #f5f5f5;
+}
+
+.card {
+  min-height: 50px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .02), 0 4px 10px rgba(0, 0, 0, .06);
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.text_center {
+  text-align: center;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.at-avatar--large {
+  width: 200px;
+  height: 200px;
+}
+
+.font-size26 {
+  font-size: 26px;
+}
+
+.margin-v20 {
+  margin: 20px 0;
+}
+
+.icon {
+  display: inline-block;
+}
+
+.nick-name {
+  font-size: 40px;
+  line-height: 60px;
+  margin: 10px 70px 0 70px;
+  position: relative;
+}
+
+.nick-name::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: rgba(0, 0, 0, .4);
+  transform: scaleX(1);
+  transition: all .2s ease-in;
+}
+
+.divider {
+  margin: auto;
+  width: 70%;
+}
+
+.bs {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .02), 0 4px 10px rgba(0, 0, 0, .06);
+}
+
+.at-row {
+  color: rgba(0, 0, 0, .6);
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.navbar-toggle {
+  box-sizing: border-box;
+  display: block;
+  height: 80px;
+  line-height: 80px;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #fff;
+  font-size: 30px;
+  color: #444;
+  text-decoration: none;
+  border-top: 1px solid #eee;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  opacity: .6;
+}
+
+.list_container {
+  margin-top: 40px;
+  background: #fff;
+  border-radius: 20px;
+}
+
+.list_title {
+  padding: 30px 60px;
+  border-bottom: 1px solid #EEE;
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, .05);
+  background: linear-gradient(
+      rgba(200, 200, 200, 0),
+      rgba(200, 200, 200, .12));
+  color: rgba(0, 0, 0, .4);
+  margin: 0 0 40px;
+  font-size: 32px;
+  line-height: 50px;
+}
+
+.list {
+  padding: 0 30px 30px;
+}
+
+.article {
+  padding-bottom: 60px;
+}
+
+.article + .article {
+  padding-top: 60px;
+  border-top: 1px solid #eee;
+}
+
+.article .title {
+  font-size: 48px;
+  line-height: 60px;
+  margin: 0 0 20px;
+}
+
+.article .content {
+  font-size: 28px;
+  margin: 0;
+  color: #696969;
+  line-height: 48px;
+  letter-spacing: 1px;
+}
+
+.article .des {
+  line-height: 56px;
+  color: #8f8f8f;
+  font-size: 28px;
+}
+
+.article .time {
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin-left: 10px;
+}

@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-commonjs
+const path = require('path')
+
 const config = {
   projectName: 'wechat-halo',
   date: '2020-2-29',
@@ -22,7 +25,12 @@ const config = {
       'transform-object-rest-spread'
     ]
   },
-  defineConstants: {
+  sass: {
+    resource: path.resolve(__dirname, '..', 'src/styles/variables.scss')
+  },
+  defineConstants: {},
+  alias: {
+    '@styles': path.resolve(__dirname, '..', 'src/styles')
   },
   mini: {
     postcss: {
@@ -38,9 +46,7 @@ const config = {
       },
       pxtransform: {
         enable: true,
-        config: {
-
-        }
+        config: {}
       },
       url: {
         enable: true,
@@ -60,6 +66,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    esnextModules: ['taro-ui'],
     postcss: {
       autoprefixer: {
         enable: true,
