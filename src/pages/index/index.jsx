@@ -5,6 +5,7 @@ import './index.scss'
 import UserProfile from "../../components/UserProfile"
 import post from "../../api/post"
 import PostList from '../../components/PostList'
+import AppNav from "../../components/AppNav";
 
 class Index extends Component {
 
@@ -79,25 +80,28 @@ class Index extends Component {
     const {isLoaded} = this.state
     const {error} = this.state
     return (
-      <ListView
-        isLoaded={isLoaded}
-        isError={error}
-        hasMore={postsData.hasNext}
-        isEmpty={!postsData.hasContent}
-        onPullDownRefresh={this.pullDownRefresh.bind(this)}
-        onScrollToLower={this.onScrollToLower.bind(this)}
-        style={{height: '100vh'}}
-      >
-        <View className='main'>
-          <UserProfile />
-          <View className='list_container bs'>
-            <View className='list_title'>最新文章</View>
-            <View className='list'>
-              <PostList posts={posts} />
+      <View>
+        <ListView
+          isLoaded={isLoaded}
+          isError={error}
+          hasMore={postsData.hasNext}
+          isEmpty={!postsData.hasContent}
+          onPullDownRefresh={this.pullDownRefresh.bind(this)}
+          onScrollToLower={this.onScrollToLower.bind(this)}
+          style={{height: '100vh'}}
+        >
+          <View className='main'>
+            <UserProfile />
+            <View className='list_container bs'>
+              <View className='list_title'>最新文章</View>
+              <View className='list'>
+                <PostList posts={posts} />
+              </View>
             </View>
           </View>
-        </View>
-      </ListView>
+        </ListView>
+        <AppNav />
+      </View>
     )
   }
 }

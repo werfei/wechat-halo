@@ -1,8 +1,12 @@
 import {Component} from '@tarojs/taro'
-import {View} from '@tarojs/components'
-import {AtDrawer} from 'taro-ui'
+import {inject, observer} from "@tarojs/mobx"
+import {AtDrawer, AtList, AtListItem} from 'taro-ui'
 import './index.scss'
 
+@inject((stores) => ({
+  drawerStore: stores.drawerStore
+}))
+@observer
 class AppNav extends Component {
 
   static  options = {
@@ -10,25 +14,31 @@ class AppNav extends Component {
   }
 
 
-  static defaultProps = {
-    show: false
-  }
-
   componentWillMount() {
 
   }
 
+  closeDrawer = () => {
+    const {drawerStore} = this.props
+    drawerStore.close()
+  }
+
   render() {
-    const {show} = this.props
+    const {drawerStore: {isShow}} = this.props
+    const drawerWidth = Taro.pxTransform(350)
     return (
       <AtDrawer
-        show={show}
+        show={isShow}
+        width={drawerWidth}
+        onClose={this.closeDrawer}
+        style={{height: '100vh'}}
         mask
       >
-        <View className='drawer-item'>优先展示items里的数据</View>
-        <View className='drawer-item'>如果items没有数据就会展示children</View>
-        <View className='drawer-item'>这是自定义内容</View>
-        <View className='drawer-item'>这是自定义内容</View>
+        <AtList>
+          <AtListItem title='日志' />
+          <AtListItem title='归档' />
+          <AtListItem title='关于我' />
+        </AtList>
       </AtDrawer>
     )
   }

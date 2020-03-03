@@ -1,11 +1,15 @@
 import {Component} from '@tarojs/taro'
 import {Text, View} from '@tarojs/components'
 import {AtAvatar} from 'taro-ui'
+import {inject, observer} from "@tarojs/mobx"
 import classnames from 'classnames'
 import './index.scss'
 import statistic from "../../api/statistic";
-import AppNav from "../AppNav";
 
+@inject((stores) => ({
+  drawerStore: stores.drawerStore
+}))
+@observer
 class UserProfile extends Component {
   static options = {
     addGlobalClass: true
@@ -22,8 +26,7 @@ class UserProfile extends Component {
         email: null,
         nickname: null
       }
-    },
-    show: false
+    }
   }
 
   componentWillMount() {
@@ -39,16 +42,14 @@ class UserProfile extends Component {
     })
   }
 
-  showDrawer() {
-    this.setState({
-      show: true
-    })
+  showDrawer = () => {
+    const {drawerStore} = this.props
+    drawerStore.show()
   }
 
   render() {
     return (
       <View className={classnames({card: true, text_center: true})}>
-        <AppNav show={this.state.show} />
         <AtAvatar className='margin-auto' size='large' circle image={this.state.statistic.user.avatar} />
         <View className='nick-name'>
           {this.state.statistic.user.nickname}

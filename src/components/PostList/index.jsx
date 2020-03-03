@@ -40,6 +40,11 @@ class PostList extends Component {
     return footer
   }
 
+  handleClick = (id) => {
+    Taro.navigateTo({url: `/pages/posts/index?id=${id}`}).then(() => {
+    })
+  }
+
   render() {
     let content
     const {posts} = this.props
@@ -47,7 +52,7 @@ class PostList extends Component {
       content = posts.map(o => {
         let footer = this.buildCategory(o.categories);
         return (
-          <View className='article' key={o.id}>
+          <View className='article' key={o.id} onClick={this.handleClick.bind(this, o.id)}>
             <View className='title'>{o.title}</View>
             <View className='content'>
               {o.summary}

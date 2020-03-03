@@ -1,0 +1,19 @@
+@import "../../components/towxml/towxml.wxss";
+
+page, body {
+  background: #ffffff;
+}
+
+.at-article {
+
+  .article_title {
+    font-size: 48px;
+    line-height: 72px;
+    margin: 0 30px;
+    color: #333;
+  }
+
+  .article-author {
+    margin-left: 20px;
+  }
+}

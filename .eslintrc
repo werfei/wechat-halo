@@ -6,7 +6,14 @@
     "no-console": "off",
     "space-before-function-paren": 0,
     "react/react-in-jsx-scope": "off",
+    "import/no-commonjs": "off",
     "taro/custom-component-children": "off"
   },
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "globals":{
+    "document": true,
+    "localStorage": true,
+    "Taro": true,
+    "window": true
+  }
 }

@@ -29,21 +29,17 @@ const config = {
     resource: path.resolve(__dirname, '..', 'src/styles/variables.scss')
   },
   defineConstants: {},
+  copy: {
+    patterns: [
+      { from: 'src/components/towxml', to: 'dist/components/towxml'}
+    ],
+    options: {}
+  },
   alias: {
     '@styles': path.resolve(__dirname, '..', 'src/styles')
   },
   mini: {
     postcss: {
-      autoprefixer: {
-        enable: true,
-        config: {
-          browsers: [
-            'last 3 versions',
-            'Android >= 4.1',
-            'ios >= 8'
-          ]
-        }
-      },
       pxtransform: {
         enable: true,
         config: {}
