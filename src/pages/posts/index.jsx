@@ -5,8 +5,10 @@ import './index.scss'
 import post from "../../api/post"
 import cons from "../../config/cons"
 
-const parser = require('../../components/towxml/index')
-const md = require('../../components/towxml/parse/markdown/index')
+let md;
+if (process.env.TARO_ENV === 'h5') {
+  md = require('../../components/towxml/parse/markdown/index')
+}
 
 class Posts extends Component {
 
@@ -34,6 +36,24 @@ class Posts extends Component {
   // 页面加载事件
   componentWillMount() {
     this.loadPost()
+    global._events = {
+      tap: function (item) {
+        if (item.tag === 'img' && item.attr.src) {
+          Taro.previewImage({
+            urls: [item.attr.src]
+          }).then(() => {
+          }).catch(() => {
+          })
+        } else if (item.tag === 'navigator') {
+          Taro.setClipboardData({data: item.attr.href}).then(() => {
+            Taro.showToast({
+              title: "链接已复制"
+            }).then(() => {
+            })
+          })
+        }
+      }
+    }
   }
 
   componentDidUpdate() {
@@ -44,10 +64,6 @@ class Posts extends Component {
     usingComponents: {
       'towxml': '../../components/towxml/towxml' // 书写第三方组件的相对路径
     }
-  }
-
-  wxmlTagATap(e) {
-    console.log(e)
   }
 
   loadPost() {
@@ -64,29 +80,6 @@ class Posts extends Component {
 
   render() {
     const {posts} = this.state
-    let content = null
-    if (process.env.TARO_ENV !== 'h5') {
-      content = parser(posts.originalContent || '', 'markdown', {
-        events: {
-          tap: (item) => {
-            if (item.tag === 'img' && item.attr.src) {
-              Taro.previewImage({
-                urls: [item.attr.src]
-              }).then(() => {
-              }).catch(() => {
-              })
-            } else if (item.tag === 'navigator') {
-              Taro.setClipboardData({data: item.attr.href}).then(() => {
-                Taro.showToast({
-                  title: "链接已复制"
-                }).then(() => {
-                })
-              })
-            }
-          }
-        }
-      })
-    }
     return (
       <View className='at-article'>
         <View className='article_title'>
@@ -96,7 +89,8 @@ class Posts extends Component {
           {moment(posts.createTime).format('YYYY-MM-DD')}<Text className='article-author'>{cons.blogName}</Text>
         </View>
         <View className='at-article__content'>
-          {process.env.TARO_ENV !== 'h5' ? <towxml nodes={content} /> : md(posts.originalContent || '')}
+          {process.env.TARO_ENV !== 'h5' ?
+            <towxml content={posts.originalContent || ''} type='markdown' /> : md(posts.originalContent || '')}
         </View>
       </View>
     )
