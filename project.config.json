@@ -6,6 +6,7 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
+		"enhance": false,
 		"postcss": false,
 		"minified": true,
 		"newFeature": true,
@@ -21,7 +22,6 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"enhance": false,
 		"bundle": true
 	},
 	"compileType": "miniprogram",

@@ -1,14 +1,10 @@
 import {Component} from '@tarojs/taro'
 import {Text, View} from "@tarojs/components"
 import moment from "moment"
+import TaroParser from "taro-parse"
 import './index.scss'
 import post from "../../api/post"
 import cons from "../../config/cons"
-
-let md;
-if (process.env.TARO_ENV === 'h5') {
-  md = require('../../components/towxml/parse/markdown/index')
-}
 
 class Posts extends Component {
 
@@ -59,11 +55,17 @@ class Posts extends Component {
   componentDidUpdate() {
   }
 
-  config = {
-    // 定义需要引入的第三方组件
-    usingComponents: {
-      'towxml': '../../components/towxml/towxml' // 书写第三方组件的相对路径
-    }
+  imgClick = (src) => {
+    Taro.previewImage({urls: [src]}).then(() => {
+    })
+  }
+
+  linkClick = (href) => {
+    Taro.setClipboardData({data: href}).then(() => {
+      Taro.showToast({title: '链接已复制'}).then(() => {
+      })
+    })
+
   }
 
   loadPost() {
@@ -89,8 +91,17 @@ class Posts extends Component {
           {moment(posts.createTime).format('YYYY-MM-DD')}<Text className='article-author'>{cons.blogName}</Text>
         </View>
         <View className='at-article__content'>
-          {process.env.TARO_ENV !== 'h5' ?
-            <towxml content={posts.originalContent || ''} type='markdown' /> : md(posts.originalContent || '')}
+          {/*{process.env.TARO_ENV !== 'h5' ?*/}
+          {/*  <towxml content={posts.originalContent || ''} type='markdown' /> : md(posts.originalContent || '')}*/}
+          <TaroParser
+            type='markdown'
+            theme='light'
+            onImgClick={this.imgClick}
+            onLinkClick={this.linkClick}
+            yumlApi='https://md.werfei.com/?yuml'
+            latexApi='https://md.werfei.com/?tex'
+            content={posts.originalContent}
+          />
         </View>
       </View>
     )

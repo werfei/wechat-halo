@@ -254,10 +254,10 @@
     swiper "4.4.2"
     weui "^1.1.2"
 
-"@tarojs/mini-runner@^2.0.5":
+"@tarojs/mini-runner@2.0.5":
   version "2.0.5"
-  resolved "https://registry.npm.taobao.org/@tarojs/mini-runner/download/@tarojs/mini-runner-2.0.5.tgz?cache=0&sync_timestamp=1582769593217&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40tarojs%2Fmini-runner%2Fdownload%2F%40tarojs%2Fmini-runner-2.0.5.tgz#85fb35b2147c93d8cd6e5c44cf115e47d72005c6"
-  integrity sha1-hfs1shR8k9jNblxEzxFeR9cgBcY=
+  resolved "https://registry.yarnpkg.com/@tarojs/mini-runner/-/mini-runner-2.0.5.tgz#85fb35b2147c93d8cd6e5c44cf115e47d72005c6"
+  integrity sha512-DSf1beehx9bWQ/XaNLHgFDescXWZhpZTI9cnc0TVDL1sf8y21r/4dlmc0Q3NUgL6odNEd1Duy57SSWpGf9AdVQ==
   dependencies:
     "@tarojs/runner-utils" "2.0.5"
     "@tarojs/taro" "2.0.5"
@@ -9213,6 +9213,11 @@ taro-listview@^1.1.16:
     global "^4.4.0"
     nerv-devtools "^1.4.4"
     nervjs "^1.4.4"
+
+taro-parse@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/taro-parse/-/taro-parse-1.0.2.tgz#3d77fd775f0307f04bb5e3682d8269db1a066eba"
+  integrity sha512-3vEmgVMWw00SKnl4Ya22wTtsFTkiTCKwYxPapXfNX3yuRs3liFc1Xwh7LmwW4GVco1pAk4RKvoL3ViVEJtATxw==
 
 taro-skeleton@^1.0.13:
   version "1.0.13"
