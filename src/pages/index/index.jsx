@@ -1,6 +1,6 @@
 import {Component} from '@tarojs/taro'
 import {View} from '@tarojs/components'
-import ListView from 'taro-listview'
+import {AtLoadMore} from 'taro-ui'
 import './index.scss'
 import UserProfile from "../../components/UserProfile"
 import post from "../../api/post"
@@ -17,8 +17,7 @@ class Index extends Component {
       hasContent: false
     },
     posts: [],
-    isLoaded: false,
-    error: false
+    isLoaded: false
   }
 
   componentWillMount() {
@@ -29,20 +28,23 @@ class Index extends Component {
     addGlobalClass: true
   }
 
-  pullDownRefresh(reset) {
-    console.log(111)
+  config = {
+    enablePullDownRefresh: true,
+    backgroundTextStyle: "dark"
+  }
+
+  onPullDownRefresh() {
     this.loadData(0, function () {
-      reset()
+      Taro.stopPullDownRefresh()
     })
   }
 
-  onScrollToLower(reset) {
+  onReachBottom() {
     if (!this.state.postsData.hasNext) {
-      reset()
       return
     }
     this.loadData(this.state.postsData.page + 1, function () {
-      reset()
+
     })
   }
 
@@ -63,7 +65,7 @@ class Index extends Component {
       }
       res.data.content = []
       this.setState({
-        isLoaded: true,
+        isLoaded: false,
         postsData: Object.assign(this.state.postsData, res.data),
         posts: posts
       })
@@ -72,8 +74,7 @@ class Index extends Component {
         callback()
       }
       this.setState({
-        isLoaded: true,
-        error: true
+        isLoaded: false
       })
     })
   }
@@ -82,28 +83,19 @@ class Index extends Component {
     const {postsData} = this.state
     const {posts} = this.state
     const {isLoaded} = this.state
-    const {error} = this.state
     return (
       <View>
-        <ListView
-          isLoaded={isLoaded}
-          isError={error}
-          hasMore={postsData.hasNext}
-          isEmpty={!postsData.hasContent}
-          onPullDownRefresh={this.pullDownRefresh.bind(this)}
-          onScrollToLower={this.onScrollToLower.bind(this)}
-          style={{height: '100vh'}}
-        >
-          <View className='main'>
-            <UserProfile />
-            <View className='list_container bs'>
-              <View className='list_title'>最新文章</View>
-              <View className='list'>
-                <PostList posts={posts} />
-              </View>
+        <View className='main'>
+          <UserProfile />
+          <View className='list_container bs'>
+            <View className='list_title'>最新文章</View>
+            <View className='list'>
+              <PostList posts={posts} />
             </View>
           </View>
-        </ListView>
+          {postsData.content.length > 10 &&
+          <AtLoadMore noMoreText='亲，到底了~' status={isLoaded ? 'loading' : (postsData.hasNext ? 'more' : 'noMore')} />}
+        </View>
         <AppNav />
       </View>
     )

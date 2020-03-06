@@ -9214,10 +9214,10 @@ taro-listview@^1.1.16:
     nerv-devtools "^1.4.4"
     nervjs "^1.4.4"
 
-taro-parse@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/taro-parse/-/taro-parse-1.1.0.tgz#da5013e014d57e67b1566ec683945d599ef657a1"
-  integrity sha512-pbubEjxgNuoGa3AA6uIvFldIos3lbo8woV4LI4UWsCudj27/TXflyg/lFlJIti3nhfivmSyYrackqi4nHGiKcQ==
+taro-parse@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/taro-parse/-/taro-parse-1.1.1.tgz#9735f0b9e358ae24c811ecde7ea45cc42cde8305"
+  integrity sha512-sSK9VgEgr3mNiYGW6J+hd07ieUdZPvpDY1AIpNNfLhyl2dl37tQ/uNm/u+OKlYQ/FNWj0pvy0v7SKlvjlqmOOg==
 
 taro-skeleton@^1.0.13:
   version "1.0.13"

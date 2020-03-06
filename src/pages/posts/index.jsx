@@ -32,27 +32,6 @@ class Posts extends Component {
   // 页面加载事件
   componentWillMount() {
     this.loadPost()
-    global._events = {
-      tap: function (item) {
-        if (item.tag === 'img' && item.attr.src) {
-          Taro.previewImage({
-            urls: [item.attr.src]
-          }).then(() => {
-          }).catch(() => {
-          })
-        } else if (item.tag === 'navigator') {
-          Taro.setClipboardData({data: item.attr.href}).then(() => {
-            Taro.showToast({
-              title: "链接已复制"
-            }).then(() => {
-            })
-          })
-        }
-      }
-    }
-  }
-
-  componentDidUpdate() {
   }
 
   imgClick = (src) => {

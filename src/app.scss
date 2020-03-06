@@ -1,6 +1,9 @@
 @import '~taro-ui/dist/style/index.scss';
 @import './assets/font/iconfont.scss';
-
+.at-load-more{
+  height: 1.5em;
+  font-size: 28px;
+}
 page, html {
   background: #f5f5f5;
 }
