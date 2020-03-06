@@ -6,13 +6,11 @@ class DrawerStore {
   @action.bound
   show() {
     this.isShow = true
-    console.log(2)
   }
 
   @action.bound
   close() {
     this.isShow = false
-    console.log(1)
   }
 }
 
