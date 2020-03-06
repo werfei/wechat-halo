@@ -91,8 +91,6 @@ class Posts extends Component {
           {moment(posts.createTime).format('YYYY-MM-DD')}<Text className='article-author'>{cons.blogName}</Text>
         </View>
         <View className='at-article__content'>
-          {/*{process.env.TARO_ENV !== 'h5' ?*/}
-          {/*  <towxml content={posts.originalContent || ''} type='markdown' /> : md(posts.originalContent || '')}*/}
           <TaroParser
             type='markdown'
             theme='light'

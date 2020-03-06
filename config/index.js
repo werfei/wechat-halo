@@ -29,12 +29,6 @@ const config = {
     resource: path.resolve(__dirname, '..', 'src/styles/variables.scss')
   },
   defineConstants: {},
-  copy: {
-    patterns: [
-      { from: 'src/components/towxml', to: 'dist/components/towxml'}
-    ],
-    options: {}
-  },
   alias: {
     '@styles': path.resolve(__dirname, '..', 'src/styles')
   },
