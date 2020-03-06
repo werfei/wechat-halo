@@ -25,6 +25,10 @@ class Index extends Component {
     this.loadData(0)
   }
 
+  options = {
+    addGlobalClass: true
+  }
+
   pullDownRefresh(reset) {
     console.log(111)
     this.loadData(0, function () {
@@ -46,7 +50,7 @@ class Index extends Component {
     this.setState({
       isLoaded: true
     })
-    post.posts({sort: 'createTime', page: page, size: 2}).then(res => {
+    post.posts({sort: 'createTime,desc', page: page, size: 2}).then(res => {
       if (callback) {
         callback()
       }
