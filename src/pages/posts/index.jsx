@@ -47,6 +47,12 @@ class Posts extends Component {
 
   }
 
+  onShareAppMessage() {
+    return {
+      title: this.state.posts.title || cons.blogName
+    }
+  }
+
   loadPost() {
     post.info(this.$router.params.id).then(res => {
       this.setState({

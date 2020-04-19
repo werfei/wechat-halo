@@ -6,6 +6,7 @@ import UserProfile from "../../components/UserProfile"
 import post from "../../api/post"
 import PostList from '../../components/PostList'
 import AppNav from "../../components/AppNav";
+import cons from "../../config/cons";
 
 class Index extends Component {
 
@@ -46,6 +47,12 @@ class Index extends Component {
     this.loadData(this.state.postsData.page + 1, function () {
 
     })
+  }
+
+  onShareAppMessage() {
+    return {
+      title: cons.blogName
+    }
   }
 
   loadData(page, callback) {
